@@ -7,7 +7,6 @@
 #include "Intersection.h"
 #include "Graphics.h"
 
-
 // Paris
 void createTrafficObjects_Paris(std::vector<std::shared_ptr<Street>> &streets, std::vector<std::shared_ptr<Intersection>> &intersections, std::vector<std::shared_ptr<Vehicle>> &vehicles, std::string &filename, int nVehicles)
 {
@@ -124,28 +123,26 @@ int main()
     /* PART 2 : simulate traffic objects */
 
     // simulate intersection
-    std::for_each(intersections.begin(), intersections.end(), [](std::shared_ptr<Intersection> &i) {
-        i->simulate();
-    });
+    std::for_each(intersections.begin(), intersections.end(), [](std::shared_ptr<Intersection> &i)
+                  { i->simulate(); });
 
     // simulate vehicles
-    std::for_each(vehicles.begin(), vehicles.end(), [](std::shared_ptr<Vehicle> &v) {
-        v->simulate();
-    });
+    std::for_each(vehicles.begin(), vehicles.end(), [](std::shared_ptr<Vehicle> &v)
+                  { v->simulate(); });
 
     /* PART 3 : Launch visualization */
 
     // add all objects into common vector
     std::vector<std::shared_ptr<TrafficObject>> trafficObjects;
-    std::for_each(intersections.begin(), intersections.end(), [&trafficObjects](std::shared_ptr<Intersection> &intersection) {
+    std::for_each(intersections.begin(), intersections.end(), [&trafficObjects](std::shared_ptr<Intersection> &intersection)
+                  {
         std::shared_ptr<TrafficObject> trafficObject = std::dynamic_pointer_cast<TrafficObject>(intersection);
-        trafficObjects.push_back(trafficObject);
-    });
+        trafficObjects.push_back(trafficObject); });
 
-    std::for_each(vehicles.begin(), vehicles.end(), [&trafficObjects](std::shared_ptr<Vehicle> &vehicles) {
+    std::for_each(vehicles.begin(), vehicles.end(), [&trafficObjects](std::shared_ptr<Vehicle> &vehicles)
+                  {
         std::shared_ptr<TrafficObject> trafficObject = std::dynamic_pointer_cast<TrafficObject>(vehicles);
-        trafficObjects.push_back(trafficObject);
-    });
+        trafficObjects.push_back(trafficObject); });
 
     // draw all objects in vector
     Graphics *graphics = new Graphics();

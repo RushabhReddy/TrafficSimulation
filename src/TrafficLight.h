@@ -6,7 +6,11 @@
 #include <condition_variable>
 #include "TrafficObject.h"
 
-enum class TrafficLightPhase {red, green};
+enum class TrafficLightPhase
+{
+    red,
+    green
+};
 
 // forward declarations to avoid include cycle
 class Vehicle;
@@ -23,7 +27,6 @@ private:
     std::condition_variable _cond;
     std::deque<T> _queue;
 };
-
 
 class TrafficLight : public TrafficObject
 {
