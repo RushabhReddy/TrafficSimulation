@@ -1,4 +1,4 @@
-# Concurrent Traffic Simulation
+# CPPND: Concurrent Traffic Simulation
 
 <img src="data/traffic_simulation.gif"/>
 
